@@ -1,5 +1,5 @@
 import React from 'react';
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import musicIconURL from './music/music.png';
 import musicInsetIconURL from './music/music-small.svg';
@@ -45,6 +45,12 @@ import gdxforIconURL from './gdxfor/gdxfor.png';
 import gdxforInsetIconURL from './gdxfor/gdxfor-small.svg';
 import gdxforConnectionIconURL from './gdxfor/gdxfor-illustration.svg';
 import gdxforConnectionSmallIconURL from './gdxfor/gdxfor-small.svg';
+
+import smartLumiesIconURL from './smart-lumies/smart-lumies.png';
+import smartLumiesInsetIconURL from './smart-lumies/smart-lumies-small.svg';
+import smartLumiesConnectionIconURL from './smart-lumies/smart-lumies-illustration.svg';
+import smartLumiesConnectionSmallIconURL from './smart-lumies/smart-lumies-small.svg';
+import smartLumiesConnectionTipIconURL from './smart-lumies/smart-lumies-button-illustration.svg';
 
 export default [
     {
@@ -317,5 +323,36 @@ export default [
             />
         ),
         helpLink: 'https://scratch.mit.edu/vernier'
+    },
+    {
+        name: 'Smart Lumies',
+        extensionId: 'smartLumies',
+        collaborator: 'PlusPlus',
+        iconURL: smartLumiesIconURL,
+        insetIconURL: smartLumiesInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Have fun with Smart Lumies Cube."
+                description="The Cube is a fully interactive, play-proof digital smart-toy that helps kids boost their cognitive development."
+                id="gui.extension.smartLumies.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        bluetoothRequired: true,
+        internetConnectionRequired: false,
+        launchPeripheralConnectionFlow: false,
+        useAutoScan: false,
+        connectionIconURL: smartLumiesConnectionIconURL,
+        connectionSmallIconURL: smartLumiesConnectionSmallIconURL,
+        connectionTipIconURL: smartLumiesConnectionTipIconURL,
+        connectingMessage: (
+            <FormattedMessage
+                defaultMessage="Connecting"
+                description="Have your Cube nearby."
+                id="gui.extension.smartLumies.connectingMessage"
+            />
+        ),
+        helpLink: 'https://smartlumies.com'
     }
 ];
