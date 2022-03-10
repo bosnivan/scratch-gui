@@ -1,11 +1,8 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import chooseAnExtensionIconURL from './chooseAnExtension/chooseAnExtension.png';
-import chooseAnExtensionInsetIconURL from './chooseAnExtension/chooseAnExtension-small.svg';
-
-import extensionLoaderIconURL from './extensionLoader/extensionLoader.png';
-import extensionLoaderInsetIconURL from './extensionLoader/extensionLoader-small.svg';
+import externalExtensionIconURL from './externalExtension/external-extension.png';
+import externalExtensionInsetIconURL from './externalExtension/external-extension-small.svg';
 
 import musicIconURL from './music/music.png';
 import musicInsetIconURL from './music/music-small.svg';
@@ -62,46 +59,23 @@ export default [
     {
         name: (
             <FormattedMessage
-                defaultMessage="Choose an extension"
-                description="Name for the custom extension selector"
-                id="gui.extension.chooseAnExtension.name"
-            />
-        ),
-        iconURL: chooseAnExtensionIconURL,
-        insetIconURL: chooseAnExtensionInsetIconURL,
-        description: (
-            <FormattedMessage
-                defaultMessage="Load extension from the Internet."
-                description="Description for the custom extension selector"
-                id="gui.extension.chooseAnExtension.description"
-            />
-        ),
-        featured: true,
-        disabled: false,
-        internetConnectionRequired: true,
-        collaborator: 'SheepTester'
-    },
-    {
-        name: (
-            <FormattedMessage
-                defaultMessage="Extension Loader"
+                defaultMessage="External Extension"
                 description="Name for the extension loader selector"
-                id="gui.extension.extensionLoader.name"
+                id="gui.extension.externalExtension.name"
             />
         ),
-        iconURL: extensionLoaderIconURL,
-        insetIconURL: extensionLoaderInsetIconURL,
+        iconURL: externalExtensionIconURL,
+        insetIconURL: externalExtensionInsetIconURL,
         description: (
             <FormattedMessage
                 defaultMessage="Load extension from the Internet."
                 description="Description for the extension loader selector"
-                id="gui.extension.extensionLoader.description"
+                id="gui.extension.externalExtension.description"
             />
         ),
         featured: true,
         disabled: false,
-        internetConnectionRequired: true,
-        collaborator: 'Yengawa Lab'
+        internetConnectionRequired: true
     },
     {
         name: (
