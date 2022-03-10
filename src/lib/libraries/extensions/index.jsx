@@ -1,6 +1,9 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
+import chooseAnExtensionIconURL from './chooseAnExtension/chooseAnExtension.png';
+import chooseAnExtensionInsetIconURL from './chooseAnExtension/chooseAnExtension-small.svg';
+
 import extensionLoaderIconURL from './extensionLoader/extensionLoader.png';
 import extensionLoaderInsetIconURL from './extensionLoader/extensionLoader-small.svg';
 
@@ -56,28 +59,50 @@ import smartLumiesConnectionSmallIconURL from './smart-lumies/smart-lumies-small
 import smartLumiesConnectionTipIconURL from './smart-lumies/smart-lumies-button-illustration.svg';
 
 export default [
-	{
-		name: (
-			<FormattedMessage
-				defaultMessage="Extension Loader"
-				description="Name for the extension loader selector"
-				id="gui.extension.extensionLoader.name"
-			/>
-		),
-		iconURL: extensionLoaderIconURL,
-		insetIconURL: extensionLoaderInsetIconURL,
-		description: (
-			<FormattedMessage
-				defaultMessage="Load extension from the Internet."
-				description="Description for the extension loader selector"
-				id="gui.extension.extensionLoader.description"
-			/>
-		),
-		featured: true,
-		disabled: false,
-		internetConnectionRequired: true,
-		collaborator: 'Yengawa Lab'
-	},
+    {
+        name: (
+            <FormattedMessage
+                defaultMessage="Choose an extension"
+                description="Name for the custom extension selector"
+                id="gui.extension.chooseAnExtension.name"
+            />
+        ),
+        iconURL: chooseAnExtensionIconURL,
+        insetIconURL: chooseAnExtensionInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Load extension from the Internet."
+                description="Description for the custom extension selector"
+                id="gui.extension.chooseAnExtension.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        internetConnectionRequired: true,
+        collaborator: 'SheepTester'
+    },
+    {
+        name: (
+            <FormattedMessage
+                defaultMessage="Extension Loader"
+                description="Name for the extension loader selector"
+                id="gui.extension.extensionLoader.name"
+            />
+        ),
+        iconURL: extensionLoaderIconURL,
+        insetIconURL: extensionLoaderInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Load extension from the Internet."
+                description="Description for the extension loader selector"
+                id="gui.extension.extensionLoader.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        internetConnectionRequired: true,
+        collaborator: 'Yengawa Lab'
+    },
     {
         name: (
             <FormattedMessage

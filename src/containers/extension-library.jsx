@@ -2,7 +2,7 @@ import bindAll from 'lodash.bindall';
 import PropTypes from 'prop-types';
 import React from 'react';
 import VM from 'scratch-vm';
-import {defineMessages, injectIntl, intlShape} from 'react-intl';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 import extensionLibraryContent from '../lib/libraries/extensions/index.jsx';
 
@@ -38,54 +38,58 @@ const translations = {
 };
 
 class ExtensionLibrary extends React.PureComponent {
-    constructor (props) {
+    constructor(props) {
         super(props);
         bindAll(this, [
             'handleItemSelect'
         ]);
     }
-    handleItemSelect (item) {
+    handleItemSelect(item) {
         let id = item.extensionId;
         let url = item.extensionURL ? item.extensionURL : id;
         if (!item.disabled && !id) {
             // eslint-disable-next-line no-alert
             url = prompt(this.props.intl.formatMessage(messages.extensionUrl));
             if (url) {
-                return this.props.vm.extensionManager.fetchExtension(url)
-                    .then(({entry, blockClass}) => {
-                        id = entry.extensionId;
-                        const existingEntry = extensionLibraryContent.find(libEntry => libEntry.extensionId === id);
-                        if (existingEntry) {
-                            // Workaround to avoid official translation process.
-                            Object.assign(
-                                this.props.intl.messages,
-                                translations[this.props.intl.locale]
-                            );
-                            // eslint-disable-next-line no-alert
-                            const doReplace = confirm(
-                                this.props.intl.formatMessage(
-                                    messages.confirmReplacing,
-                                    {
-                                        name: ('props' in existingEntry.name) ?
-                                            this.props.intl.formatMessage(existingEntry.name.props) :
-                                            existingEntry.name,
-                                        url: url
-                                    }
-                                )
-                            );
-                            if (!doReplace) {
-                                return Promise.resolve(null);
+                if (url && url.endsWith('.mjs')) {
+                    return this.props.vm.extensionManager.fetchExtension(url)
+                        .then(({ entry, blockClass }) => {
+                            id = entry.extensionId;
+                            const existingEntry = extensionLibraryContent.find(libEntry => libEntry.extensionId === id);
+                            if (existingEntry) {
+                                // Workaround to avoid official translation process.
+                                Object.assign(
+                                    this.props.intl.messages,
+                                    translations[this.props.intl.locale]
+                                );
+                                // eslint-disable-next-line no-alert
+                                const doReplace = confirm(
+                                    this.props.intl.formatMessage(
+                                        messages.confirmReplacing,
+                                        {
+                                            name: ('props' in existingEntry.name) ?
+                                                this.props.intl.formatMessage(existingEntry.name.props) :
+                                                existingEntry.name,
+                                            url: url
+                                        }
+                                    )
+                                );
+                                if (!doReplace) {
+                                    return Promise.resolve(null);
+                                }
                             }
-                        }
-                        this.props.vm.extensionManager.registerExtensionBlock(entry, blockClass);
-                        return Promise.resolve(id);
-                    })
-                    .then(extensionID => {
-                        this.props.onCategorySelected(extensionID);
-                        return Promise.resolve();
-                    })
-                    // eslint-disable-next-line no-alert
-                    .catch(error => Promise.reject(error));
+                            this.props.vm.extensionManager.registerExtensionBlock(entry, blockClass);
+                            return Promise.resolve(id);
+                        })
+                        .then(extensionID => {
+                            this.props.onCategorySelected(extensionID);
+                            return Promise.resolve();
+                        })
+                        // eslint-disable-next-line no-alert
+                        .catch(error => Promise.reject(error));
+                } else {
+                    id = url;
+                }
             }
         }
         if (id && !item.disabled) {
@@ -99,7 +103,7 @@ class ExtensionLibrary extends React.PureComponent {
             return Promise.resolve();
         }
     }
-    render () {
+    render() {
         const extensionLibraryThumbnailData = extensionLibraryContent.map(extension => ({
             rawURL: extension.iconURL || extensionIcon,
             ...extension
