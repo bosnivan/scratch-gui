@@ -1,6 +1,9 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
+import extensionLoaderIconURL from './extensionLoader/extensionLoader.png';
+import extensionLoaderInsetIconURL from './extensionLoader/extensionLoader-small.svg';
+
 import musicIconURL from './music/music.png';
 import musicInsetIconURL from './music/music-small.svg';
 
@@ -53,6 +56,28 @@ import smartLumiesConnectionSmallIconURL from './smart-lumies/smart-lumies-small
 import smartLumiesConnectionTipIconURL from './smart-lumies/smart-lumies-button-illustration.svg';
 
 export default [
+	{
+		name: (
+			<FormattedMessage
+				defaultMessage="Extension Loader"
+				description="Name for the extension loader selector"
+				id="gui.extension.extensionLoader.name"
+			/>
+		),
+		iconURL: extensionLoaderIconURL,
+		insetIconURL: extensionLoaderInsetIconURL,
+		description: (
+			<FormattedMessage
+				defaultMessage="Load extension from the Internet."
+				description="Description for the extension loader selector"
+				id="gui.extension.extensionLoader.description"
+			/>
+		),
+		featured: true,
+		disabled: false,
+		internetConnectionRequired: true,
+		collaborator: 'Yengawa Lab'
+	},
     {
         name: (
             <FormattedMessage
