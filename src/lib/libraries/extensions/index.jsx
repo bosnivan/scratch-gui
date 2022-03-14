@@ -55,6 +55,9 @@ import smartLumiesConnectionIconURL from './smart-lumies/smart-lumies-illustrati
 import smartLumiesConnectionSmallIconURL from './smart-lumies/smart-lumies-small.svg';
 import smartLumiesConnectionTipIconURL from './smart-lumies/smart-lumies-button-illustration.svg';
 
+import physicsIconURL from './physics/physics.png';
+import physicsInsetIconURL from './physics/physics-small.svg';
+
 export default [
     {
         name: (
@@ -378,5 +381,21 @@ export default [
             />
         ),
         helpLink: 'https://smartlumies.com'
+    },
+    {
+        name: 'Physics',
+        extensionId: 'griffpatch',
+        collaborator: 'Griffpatch',
+        iconURL: physicsIconURL,
+        insetIconURL: physicsInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Box2D Physics extension."
+                description="Description for the Physics extension"
+                id="gui.extension.physics.description"
+            />
+        ),
+        featured: true,
+        disabled: false
     }
 ];
