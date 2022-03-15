@@ -173,10 +173,10 @@ var handleTelemetryModalOptOut = function handleTelemetryModalOptOut() {
   // the hierarchy of HOC constructor calls clearer here; it has nothing to do with redux's
   // ability to compose reducers.
 
-  var WrappedGui = Object(redux__WEBPACK_IMPORTED_MODULE_2__["compose"])(_lib_app_state_hoc_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], _lib_hash_parser_hoc_jsx__WEBPACK_IMPORTED_MODULE_5__["default"])(_containers_gui_jsx__WEBPACK_IMPORTED_MODULE_4__["default"]); // TODO a hack for testing the backpack, allow backpack host to be set by url param
+  var WrappedGui = Object(redux__WEBPACK_IMPORTED_MODULE_2__["compose"])(_lib_app_state_hoc_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], _lib_hash_parser_hoc_jsx__WEBPACK_IMPORTED_MODULE_5__["default"])(_containers_gui_jsx__WEBPACK_IMPORTED_MODULE_4__["default"]); // TODO a hack for enabling the backpack; on the vanilla version it lets you
+  // set the host using ?backpack_host in the URL
 
-  var backpackHostMatches = window.location.href.match(/[?&]backpack_host=([^&]*)&?/);
-  var backpackHost = backpackHostMatches ? backpackHostMatches[1] : null;
+  var backpackHost = 'yep';
   var scratchDesktopMatches = window.location.href.match(/[?&]isScratchDesktop=([^&]+)/);
   var simulateScratchDesktop;
 
@@ -191,6 +191,19 @@ var handleTelemetryModalOptOut = function handleTelemetryModalOptOut() {
     }
   }
 
+  var projectFileMatches = window.location.href.match(/[?&]project=([^&]*)&?/);
+  var projectFile = projectFileMatches ? decodeURIComponent(projectFileMatches[1]) : null;
+
+  var onVmInit = function onVmInit(vm) {
+    if (projectFile) {
+      fetch(projectFile).then(function (response) {
+        return response.arrayBuffer();
+      }).then(function (arrayBuffer) {
+        vm.loadProject(arrayBuffer);
+      });
+    }
+  };
+
   if (false) {}
 
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( // important: this is checking whether `simulateScratchDesktop` is truthy, not just defined!
@@ -201,14 +214,16 @@ var handleTelemetryModalOptOut = function handleTelemetryModalOptOut() {
     canSave: false,
     onTelemetryModalCancel: handleTelemetryModalCancel,
     onTelemetryModalOptIn: handleTelemetryModalOptIn,
-    onTelemetryModalOptOut: handleTelemetryModalOptOut
+    onTelemetryModalOptOut: handleTelemetryModalOptOut,
+    onVmInit: onVmInit
   }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(WrappedGui, {
     canEditTitle: true,
     backpackVisible: true,
     showComingSoon: true,
     backpackHost: backpackHost,
     canSave: false,
-    onClickLogo: onClickLogo
+    onClickLogo: onClickLogo,
+    onVmInit: onVmInit
   }), appTarget);
 });
 
