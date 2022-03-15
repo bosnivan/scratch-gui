@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {compose} from 'redux';
+import { compose } from 'redux';
 
 import AppStateHOC from '../lib/app-state-hoc.jsx';
 import GUI from '../containers/gui.jsx';
@@ -39,9 +39,9 @@ export default appTarget => {
         HashParserHOC
     )(GUI);
 
-    // TODO a hack for testing the backpack, allow backpack host to be set by url param
-    const backpackHostMatches = window.location.href.match(/[?&]backpack_host=([^&]*)&?/);
-    const backpackHost = backpackHostMatches ? backpackHostMatches[1] : null;
+    // TODO a hack for enabling the backpack; on the vanilla version it lets you
+    // set the host using ?backpack_host in the URL
+    const backpackHost = 'yep';
 
     const scratchDesktopMatches = window.location.href.match(/[?&]isScratchDesktop=([^&]+)/);
     let simulateScratchDesktop;
@@ -55,6 +55,19 @@ export default appTarget => {
             simulateScratchDesktop = scratchDesktopMatches[1];
         }
     }
+
+    const projectFileMatches = window.location.href.match(/[?&]project=([^&]*)&?/);
+    const projectFile = projectFileMatches ? decodeURIComponent(projectFileMatches[1]) : null;
+
+    const onVmInit = vm => {
+        if (projectFile) {
+            fetch(projectFile)
+                .then(response => response.arrayBuffer())
+                .then(arrayBuffer => {
+                    vm.loadProject(arrayBuffer);
+                });
+        }
+    };
 
     if (process.env.NODE_ENV === 'production' && typeof window === 'object') {
         // Warn before navigating away
@@ -72,6 +85,7 @@ export default appTarget => {
                 onTelemetryModalCancel={handleTelemetryModalCancel}
                 onTelemetryModalOptIn={handleTelemetryModalOptIn}
                 onTelemetryModalOptOut={handleTelemetryModalOptOut}
+                onVmInit={onVmInit}
             /> :
             <WrappedGui
                 canEditTitle
@@ -80,6 +94,7 @@ export default appTarget => {
                 backpackHost={backpackHost}
                 canSave={false}
                 onClickLogo={onClickLogo}
+                onVmInit={onVmInit}
             />,
         appTarget);
 };

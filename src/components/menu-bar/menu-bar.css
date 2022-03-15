@@ -27,7 +27,7 @@
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: $menu-bar-standard-font-size;
     font-weight: bold;
-    background-color: $motion-primary;
+    background-color: $green-primary;
     color: $ui-white;
 }
 
@@ -223,4 +223,13 @@
     height: 1.25rem;
     margin: 0.5rem;
     vertical-align: middle;
+}
+
+p.name {
+    color: #0da177;
+    font-size: 28px;
+}
+
+p.name:hover {
+    color: whitesmoke;
 }

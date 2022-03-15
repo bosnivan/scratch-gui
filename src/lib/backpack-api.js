@@ -4,12 +4,28 @@ import soundPayload from './backpack/sound-payload';
 import spritePayload from './backpack/sprite-payload';
 import codePayload from './backpack/code-payload';
 
+const LOCALSTORAGE_KEY = '[Scratch++] backpack'
+
+// Makes a psuedo-MD5 hash to satisfy the sb3 validator. To make it clear that
+// it's not a hash, these IDs will all start with "aaaa".
+const randomId = () => {
+    let str = 'aaaa';
+    for (let i = 0; i < 32 - 4; i++) {
+        str += Math.floor(Math.random() * 16).toString(16);
+    }
+    return str;
+};
+
+
 // Add a new property for the full thumbnail url, which includes the host.
 // Also include a full body url for loading sprite zips
 // TODO retreiving the images through storage would allow us to remove this.
 const includeFullUrls = (item, host) => Object.assign({}, item, {
-    thumbnailUrl: `${host}/${item.thumbnail}`,
-    bodyUrl: `${host}/${item.body}`
+    // Apparently scratch-storage uses `body` to determine the file type
+    // from its file extension, so here's a hacky solution
+    body: `${item.id}.${item.mime.match(/\/(\w+)/)[1]}`,
+    thumbnailUrl: `data:image/jpeg;base64,${item.thumbnail}`,
+    bodyUrl: `data:${item.mime};base64,${item.body}`
 });
 
 const getBackpackContents = ({
@@ -19,17 +35,8 @@ const getBackpackContents = ({
     limit,
     offset
 }) => new Promise((resolve, reject) => {
-    xhr({
-        method: 'GET',
-        uri: `${host}/${username}?limit=${limit}&offset=${offset}`,
-        headers: {'x-token': token},
-        json: true
-    }, (error, response) => {
-        if (error || response.statusCode !== 200) {
-            return reject(new Error(response.status));
-        }
-        return resolve(response.body.map(item => includeFullUrls(item, host)));
-    });
+    const backpack = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY) || '[]') || [];
+    resolve(backpack.slice(offset, offset + limit).map(item => includeFullUrls(item, host)));
 });
 
 const saveBackpackObject = ({
@@ -40,19 +47,21 @@ const saveBackpackObject = ({
     mime, // Mime-type of the object being saved
     name, // User-facing name of the object being saved
     body, // Base64-encoded body of the object being saved
-    thumbnail // Base64-encoded JPEG thumbnail of the object being saved
+    thumbnail, // Base64-encoded JPEG thumbnail of the object being saved
+    id = randomId() // Asset ID; use random ID if not given (sprites and code, which don't use md5 hashes I think)
 }) => new Promise((resolve, reject) => {
-    xhr({
-        method: 'POST',
-        uri: `${host}/${username}`,
-        headers: {'x-token': token},
-        json: {type, mime, name, body, thumbnail}
-    }, (error, response) => {
-        if (error || response.statusCode !== 200) {
-            return reject(new Error(response.status));
-        }
-        return resolve(includeFullUrls(response.body, host));
-    });
+    const backpack = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY) || '[]') || [];
+    const newEntry = {
+        type,
+        mime,
+        name,
+        body,
+        thumbnail,
+        id
+    };
+    backpack.splice(0, 0, newEntry);
+    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(backpack));
+    resolve(includeFullUrls(newEntry, host));
 });
 
 const deleteBackpackObject = ({
@@ -61,22 +70,24 @@ const deleteBackpackObject = ({
     token,
     id
 }) => new Promise((resolve, reject) => {
-    xhr({
-        method: 'DELETE',
-        uri: `${host}/${username}/${id}`,
-        headers: {'x-token': token}
-    }, (error, response) => {
-        if (error || response.statusCode !== 200) {
-            return reject(new Error(response.status));
-        }
-        return resolve(response.body);
-    });
+    const backpack = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY) || '[]') || [];
+    const index = backpack.findIndex(entry => entry.id === id);
+    if (index >= 0) {
+        backpack.splice(index, 1);
+        localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(backpack));
+    }
+    resolve({ ok: true });
 });
+
+const getBackpackObjectById = id => {
+    const backpack = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY) || '[]') || [];
+    return backpack.find(entry => entry.id === id);
+};
 
 // Two types of backpack items are not retreivable through storage
 // code, as json and sprite3 as arraybuffer zips.
 const fetchAs = (responseType, uri) => new Promise((resolve, reject) => {
-    xhr({uri, responseType}, (error, response) => {
+    xhr({ uri, responseType }, (error, response) => {
         if (error || response.statusCode !== 200) {
             return reject(new Error(response.status));
         }
@@ -93,6 +104,7 @@ export {
     getBackpackContents,
     saveBackpackObject,
     deleteBackpackObject,
+    getBackpackObjectById,
     costumePayload,
     soundPayload,
     spritePayload,
