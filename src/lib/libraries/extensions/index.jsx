@@ -58,6 +58,11 @@ import smartLumiesConnectionTipIconURL from './smart-lumies/smart-lumies-button-
 import physicsIconURL from './physics/physics.png';
 import physicsInsetIconURL from './physics/physics-small.svg';
 
+import matatabotIconURL from './matatabot/matatabot.png';
+import matatabotInsetIconURL from './matatabot/matatabot-small.svg';
+import matatabotConnectionIconURL from './matatabot/matatabot-illustration.svg';
+import matatabotConnectionSmallIconURL from './matatabot/matatabot-small.svg';
+
 export default [
     {
         name: (
@@ -397,5 +402,35 @@ export default [
         ),
         featured: true,
         disabled: false
+    },
+    {
+        name: 'MatataBot',
+        extensionId: 'matatabot',
+        collaborator: 'matatalab',
+        iconURL: matatabotIconURL,
+        insetIconURL: matatabotInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Connect your projects with the MatataBot."
+                description="Description for the MatataBot extension"
+                id="gui.extension.matatabot.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        bluetoothRequired: true,
+        internetConnectionRequired: false,
+        launchPeripheralConnectionFlow: false,
+        useAutoScan: false,
+        connectionIconURL: matatabotConnectionIconURL,
+        connectionSmallIconURL: matatabotConnectionSmallIconURL,
+        connectingMessage: (
+            <FormattedMessage
+                defaultMessage="Connecting"
+                description="Have your MatataBot nearby."
+                id="gui.extension.matatabot.connectingMessage"
+            />
+        ),
+        helpLink: 'https://matatalab.com/'
     }
 ];
