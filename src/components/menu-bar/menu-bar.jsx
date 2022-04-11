@@ -79,6 +79,11 @@ const ariaMessages = defineMessages({
         id: 'gui.menuBar.tutorialsLibrary',
         defaultMessage: 'Tutorials',
         description: 'accessibility text for the tutorials button'
+    },
+    disclaimer: {
+        id: 'gui.menuBar.disclaimer',
+        defaultMessage: 'Disclaimer',
+        description: 'disclaimer text for the disclaimer button'
     }
 });
 
@@ -504,6 +509,14 @@ class MenuBar extends React.Component {
                         <FormattedMessage {...ariaMessages.tutorials} />
                     </div>
                     <Divider className={classNames(styles.divider)} />
+                    <div
+                        aria-label={this.props.intl.formatMessage(ariaMessages.disclaimer)}
+                        className={classNames(styles.menuBarItem, styles.hoverable)}
+                        onClick={this.props.onDisclaimer}
+                    >
+                        <FormattedMessage {...ariaMessages.disclaimer} />
+                    </div>
+                    <Divider className={classNames(styles.divider)} />
                     {this.props.canEditTitle ? (
                         <div className={classNames(styles.menuBarItem, styles.growable)}>
                             <MenuBarItemTooltip
@@ -583,6 +596,7 @@ MenuBar.propTypes = {
     onLogOut: PropTypes.func,
     onOpenRegistration: PropTypes.func,
     onOpenTipLibrary: PropTypes.func,
+    onDisclaimer: PropTypes.func,
     onProjectTelemetryEvent: PropTypes.func,
     onRequestOpenAbout: PropTypes.func,
     onRequestCloseAbout: PropTypes.func,
@@ -636,6 +650,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
     autoUpdateProject: () => dispatch(autoUpdateProject()),
     onOpenTipLibrary: () => dispatch(openTipsLibrary()),
+    onDisclaimer: () => alert("Scratch++ is not affiliated with, endorsed, sponsored, or specifically approved by Scratch Foundation and Scratch Foundation is not responsible for it."),
     onClickAccount: () => dispatch(openAccountMenu()),
     onRequestCloseAccount: () => dispatch(closeAccountMenu()),
     onClickFile: () => dispatch(openFileMenu()),

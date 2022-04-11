@@ -55,8 +55,24 @@ import smartLumiesConnectionIconURL from './smart-lumies/smart-lumies-illustrati
 import smartLumiesConnectionSmallIconURL from './smart-lumies/smart-lumies-small.svg';
 import smartLumiesConnectionTipIconURL from './smart-lumies/smart-lumies-button-illustration.svg';
 
+import httpIconURL from './http/http.png';
+import httpInsetIconURL from './http/http-small.svg';
+
 import physicsIconURL from './physics/physics.png';
 import physicsInsetIconURL from './physics/physics-small.svg';
+
+import matatabotIconURL from './matatabot/matatabot.png';
+import matatabotInsetIconURL from './matatabot/matatabot-small.svg';
+import matatabotConnectionIconURL from './matatabot/matatabot-illustration.svg';
+import matatabotConnectionSmallIconURL from './matatabot/matatabot-small.svg';
+
+import midiIconURL from './midi/midi.png';
+import midiInsetIconURL from './midi/midi-small.svg';
+
+import spikePrimeIconURL from './spikePrime/spikePrime.png';
+import spikePrimeInsetIconURL from './spikePrime/spikePrime-small.svg';
+import spikePrimeConnectionIconURL from './spikePrime/spikePrime-illustration.svg';
+import spikePrimeConnectionSmallIconURL from './spikePrime/spikePrime-small.svg';
 
 export default [
     {
@@ -383,6 +399,26 @@ export default [
         helpLink: 'https://smartlumies.com'
     },
     {
+        name: 'HTTP',
+        extensionId: 'http',
+        collaborator: 'PlusPlus',
+        iconURL: httpIconURL,
+        insetIconURL: httpInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Send HTTP requests and manage JSON responses."
+                description="Description for the HTTP extension"
+                id="gui.extension.http.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        bluetoothRequired: false,
+        internetConnectionRequired: true,
+        launchPeripheralConnectionFlow: false,
+        useAutoScan: false
+    },
+    {
         name: 'Physics',
         extensionId: 'griffpatch',
         collaborator: 'Griffpatch',
@@ -397,5 +433,81 @@ export default [
         ),
         featured: true,
         disabled: false
+    },
+    {
+        name: 'MatataBot',
+        extensionId: 'matatabot',
+        collaborator: 'matatalab',
+        iconURL: matatabotIconURL,
+        insetIconURL: matatabotInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Connect your projects with the MatataBot."
+                description="Description for the MatataBot extension"
+                id="gui.extension.matatabot.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        bluetoothRequired: true,
+        internetConnectionRequired: false,
+        launchPeripheralConnectionFlow: false,
+        useAutoScan: false,
+        connectionIconURL: matatabotConnectionIconURL,
+        connectionSmallIconURL: matatabotConnectionSmallIconURL,
+        connectingMessage: (
+            <FormattedMessage
+                defaultMessage="Connecting"
+                description="Have your MatataBot nearby."
+                id="gui.extension.matatabot.connectingMessage"
+            />
+        ),
+        helpLink: 'https://matatalab.com/'
+    },
+    {
+        name: 'MIDI',
+        extensionId: 'midi',
+        collaborator: 'UchiwaFuujinn',
+        iconURL: midiIconURL,
+        insetIconURL: midiInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Web MIDI extension."
+                description="Description for the MIDI extension"
+                id="gui.extension.midi.description"
+            />
+        ),
+        featured: true,
+        disabled: false
+    },
+    {
+        name: 'LEGO SPIKE Prime',
+        extensionId: 'spikePrime',
+        collaborator: 'bricklife',
+        iconURL: spikePrimeIconURL,
+        insetIconURL: spikePrimeInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="LEGO SPIKE Prime extension."
+                description="Description for the LEGO SPIKE Prime extension"
+                id="gui.extension.spikePrime.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        bluetoothRequired: true,
+        internetConnectionRequired: false,
+        launchPeripheralConnectionFlow: true,
+        useAutoScan: false,
+        connectionIconURL: spikePrimeConnectionIconURL,
+        connectionSmallIconURL: spikePrimeConnectionSmallIconURL,
+        connectingMessage: (
+            <FormattedMessage
+                defaultMessage="Connecting"
+                description="Have your SPIKE Prime nearby."
+                id="gui.extension.spikePrime.connectingMessage"
+            />
+        ),
+        helpLink: 'https://github.com/bricklife/scratch-lego-bluetooth-extensions'
     }
 ];
