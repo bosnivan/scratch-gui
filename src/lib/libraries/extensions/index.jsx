@@ -55,6 +55,9 @@ import smartLumiesConnectionIconURL from './smart-lumies/smart-lumies-illustrati
 import smartLumiesConnectionSmallIconURL from './smart-lumies/smart-lumies-small.svg';
 import smartLumiesConnectionTipIconURL from './smart-lumies/smart-lumies-button-illustration.svg';
 
+import httpIconURL from './http/http.png';
+import httpInsetIconURL from './http/http-small.svg';
+
 import physicsIconURL from './physics/physics.png';
 import physicsInsetIconURL from './physics/physics-small.svg';
 
@@ -386,6 +389,26 @@ export default [
             />
         ),
         helpLink: 'https://smartlumies.com'
+    },
+    {
+        name: 'HTTP',
+        extensionId: 'http',
+        collaborator: 'PlusPlus',
+        iconURL: httpIconURL,
+        insetIconURL: httpInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Send HTTP requests and manage JSON responses."
+                description="Description for the HTTP extension"
+                id="gui.extension.http.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        bluetoothRequired: false,
+        internetConnectionRequired: true,
+        launchPeripheralConnectionFlow: false,
+        useAutoScan: false
     },
     {
         name: 'Physics',
