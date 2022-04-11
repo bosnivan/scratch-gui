@@ -66,6 +66,9 @@ import matatabotInsetIconURL from './matatabot/matatabot-small.svg';
 import matatabotConnectionIconURL from './matatabot/matatabot-illustration.svg';
 import matatabotConnectionSmallIconURL from './matatabot/matatabot-small.svg';
 
+import midiIconURL from './midi/midi.png';
+import midiInsetIconURL from './midi/midi-small.svg';
+
 export default [
     {
         name: (
@@ -455,5 +458,21 @@ export default [
             />
         ),
         helpLink: 'https://matatalab.com/'
+    },
+    {
+        name: 'MIDI',
+        extensionId: 'midi',
+        collaborator: 'UchiwaFuujinn',
+        iconURL: midiIconURL,
+        insetIconURL: midiInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Web MIDI extension."
+                description="Description for the MIDI extension"
+                id="gui.extension.midi.description"
+            />
+        ),
+        featured: true,
+        disabled: false
     }
 ];
