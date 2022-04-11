@@ -69,6 +69,11 @@ import matatabotConnectionSmallIconURL from './matatabot/matatabot-small.svg';
 import midiIconURL from './midi/midi.png';
 import midiInsetIconURL from './midi/midi-small.svg';
 
+import spikePrimeIconURL from './spikePrime/spikePrime.png';
+import spikePrimeInsetIconURL from './spikePrime/spikePrime-small.svg';
+import spikePrimeConnectionIconURL from './spikePrime/spikePrime-illustration.svg';
+import spikePrimeConnectionSmallIconURL from './spikePrime/spikePrime-small.svg';
+
 export default [
     {
         name: (
@@ -474,5 +479,35 @@ export default [
         ),
         featured: true,
         disabled: false
+    },
+    {
+        name: 'LEGO SPIKE Prime',
+        extensionId: 'spikePrime',
+        collaborator: 'bricklife',
+        iconURL: spikePrimeIconURL,
+        insetIconURL: spikePrimeInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="LEGO SPIKE Prime extension."
+                description="Description for the LEGO SPIKE Prime extension"
+                id="gui.extension.spikePrime.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        bluetoothRequired: true,
+        internetConnectionRequired: false,
+        launchPeripheralConnectionFlow: true,
+        useAutoScan: false,
+        connectionIconURL: spikePrimeConnectionIconURL,
+        connectionSmallIconURL: spikePrimeConnectionSmallIconURL,
+        connectingMessage: (
+            <FormattedMessage
+                defaultMessage="Connecting"
+                description="Have your SPIKE Prime nearby."
+                id="gui.extension.spikePrime.connectingMessage"
+            />
+        ),
+        helpLink: 'https://github.com/bricklife/scratch-lego-bluetooth-extensions'
     }
 ];
