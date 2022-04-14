@@ -74,6 +74,9 @@ import spikePrimeInsetIconURL from './spikePrime/spikePrime-small.svg';
 import spikePrimeConnectionIconURL from './spikePrime/spikePrime-illustration.svg';
 import spikePrimeConnectionSmallIconURL from './spikePrime/spikePrime-small.svg';
 
+import futureBoardIconURL from './futureBoard/futureBoard.png';
+import futureBoardInsetIconURL from './futureBoard/futureBoard-small.svg';
+
 export default [
     {
         name: (
@@ -509,5 +512,21 @@ export default [
             />
         ),
         helpLink: 'https://github.com/bricklife/scratch-lego-bluetooth-extensions'
-    }
+    },
+    {
+        name: 'Future Board',
+        extensionId: 'futureBoard',
+        collaborator: 'PlusPlus',
+        iconURL: futureBoardIconURL,
+        insetIconURL: futureBoardInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Future Board extension."
+                description="Description for the Future Board extension"
+                id="gui.extension.futureBoard.description"
+            />
+        ),
+        featured: true,
+        disabled: false
+    },
 ];
