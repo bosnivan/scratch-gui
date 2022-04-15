@@ -77,6 +77,10 @@ import spikePrimeConnectionSmallIconURL from './spikePrime/spikePrime-small.svg'
 import futureBoardIconURL from './futureBoard/futureBoard.png';
 import futureBoardInsetIconURL from './futureBoard/futureBoard-small.svg';
 
+import minecraftIconURL from './minecraft/minecraft.png';
+import minecraftInsetIconURL from './minecraft/minecraft-small.svg';
+
+
 export default [
     {
         name: (
@@ -524,6 +528,22 @@ export default [
                 defaultMessage="Future Board extension."
                 description="Description for the Future Board extension"
                 id="gui.extension.futureBoard.description"
+            />
+        ),
+        featured: true,
+        disabled: false
+    },
+    {
+        name: 'Minecraft EDU',
+        extensionId: 'minecraft',
+        collaborator: 'PlusPlus',
+        iconURL: minecraftIconURL,
+        insetIconURL: minecraftInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Minecraft EDU extension."
+                description="Description for the Minecraft EDU extension"
+                id="gui.extension.minecraft.description"
             />
         ),
         featured: true,
