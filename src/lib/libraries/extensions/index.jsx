@@ -80,6 +80,9 @@ import futureBoardInsetIconURL from './futureBoard/futureBoard-small.svg';
 import minecraftIconURL from './minecraft/minecraft.png';
 import minecraftInsetIconURL from './minecraft/minecraft-small.svg';
 
+import toolboxIconURL from './toolbox/toolbox.png';
+import toolboxInsetIconURL from './toolbox/toolbox-small.svg';
+
 
 export default [
     {
@@ -544,6 +547,22 @@ export default [
                 defaultMessage="Minecraft EDU extension."
                 description="Description for the Minecraft EDU extension"
                 id="gui.extension.minecraft.description"
+            />
+        ),
+        featured: true,
+        disabled: false
+    },
+    {
+        name: 'Toolbox',
+        extensionId: 'toolbox',
+        collaborator: 'PlusPlus',
+        iconURL: toolboxIconURL,
+        insetIconURL: toolboxInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Blocks that help the user in one way or another."
+                description="Description for the Toolbox extension"
+                id="gui.extension.toolbox.description"
             />
         ),
         featured: true,
