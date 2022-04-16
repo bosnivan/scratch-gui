@@ -74,6 +74,16 @@ import spikePrimeInsetIconURL from './spikePrime/spikePrime-small.svg';
 import spikePrimeConnectionIconURL from './spikePrime/spikePrime-illustration.svg';
 import spikePrimeConnectionSmallIconURL from './spikePrime/spikePrime-small.svg';
 
+import futureBoardIconURL from './futureBoard/futureBoard.png';
+import futureBoardInsetIconURL from './futureBoard/futureBoard-small.svg';
+
+import minecraftIconURL from './minecraft/minecraft.png';
+import minecraftInsetIconURL from './minecraft/minecraft-small.svg';
+
+import toolboxIconURL from './toolbox/toolbox.png';
+import toolboxInsetIconURL from './toolbox/toolbox-small.svg';
+
+
 export default [
     {
         name: (
@@ -509,5 +519,53 @@ export default [
             />
         ),
         helpLink: 'https://github.com/bricklife/scratch-lego-bluetooth-extensions'
-    }
+    },
+    {
+        name: 'Future Board',
+        extensionId: 'futureBoard',
+        collaborator: 'PlusPlus',
+        iconURL: futureBoardIconURL,
+        insetIconURL: futureBoardInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Future Board extension."
+                description="Description for the Future Board extension"
+                id="gui.extension.futureBoard.description"
+            />
+        ),
+        featured: true,
+        disabled: false
+    },
+    {
+        name: 'Minecraft EDU',
+        extensionId: 'minecraft',
+        collaborator: 'PlusPlus',
+        iconURL: minecraftIconURL,
+        insetIconURL: minecraftInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Minecraft EDU extension."
+                description="Description for the Minecraft EDU extension"
+                id="gui.extension.minecraft.description"
+            />
+        ),
+        featured: true,
+        disabled: false
+    },
+    {
+        name: 'Toolbox',
+        extensionId: 'toolbox',
+        collaborator: 'PlusPlus',
+        iconURL: toolboxIconURL,
+        insetIconURL: toolboxInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Blocks that help the user in one way or another."
+                description="Description for the Toolbox extension"
+                id="gui.extension.toolbox.description"
+            />
+        ),
+        featured: true,
+        disabled: false
+    },
 ];
