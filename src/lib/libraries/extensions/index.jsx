@@ -83,6 +83,9 @@ import minecraftInsetIconURL from './minecraft/minecraft-small.svg';
 import toolboxIconURL from './toolbox/toolbox.png';
 import toolboxInsetIconURL from './toolbox/toolbox-small.svg';
 
+import iCarProIconURL from './iCarPro/iCarPro.png';
+import iCarProInsetIconURL from './iCarPro/iCarPro-small.svg';
+
 
 export default [
     {
@@ -567,5 +570,32 @@ export default [
         ),
         featured: true,
         disabled: false
+    },
+    {
+        name: 'Vgate iCar Pro',
+        extensionId: 'iCarPro',
+        collaborator: 'PlusPlus',
+        iconURL: iCarProIconURL,
+        insetIconURL: iCarProInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Vgate iCar Pro extension."
+                description="Description for the Vgate iCar Pro extension"
+                id="gui.extension.iCarPro.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        bluetoothRequired: true,
+        internetConnectionRequired: false,
+        launchPeripheralConnectionFlow: false,
+        useAutoScan: false,
+        connectingMessage: (
+            <FormattedMessage
+                defaultMessage="Connecting"
+                description="Have your iCar Pro nearby."
+                id="gui.extension.iCarPro.connectingMessage"
+            />
+        )
     },
 ];
