@@ -86,6 +86,9 @@ import toolboxInsetIconURL from './toolbox/toolbox-small.svg';
 import iCarProIconURL from './iCarPro/iCarPro.png';
 import iCarProInsetIconURL from './iCarPro/iCarPro-small.svg';
 
+import snapCircuitsU33IconURL from './snapCircuitsU33/snapCircuitsU33.png';
+import snapCircuitsU33InsetIconURL from './snapCircuitsU33/snapCircuitsU33-small.svg';
+
 
 export default [
     {
@@ -595,6 +598,33 @@ export default [
                 defaultMessage="Connecting"
                 description="Have your iCar Pro nearby."
                 id="gui.extension.iCarPro.connectingMessage"
+            />
+        )
+    },
+    {
+        name: 'Snap Circuits U33',
+        extensionId: 'snapCircuitsU33',
+        collaborator: 'PlusPlus',
+        iconURL: snapCircuitsU33IconURL,
+        insetIconURL: snapCircuitsU33InsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Snap Circuits U33 extension."
+                description="Description for the Snap Circuits U33 extension"
+                id="gui.extension.snapCircuitsU33.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        bluetoothRequired: true,
+        internetConnectionRequired: false,
+        launchPeripheralConnectionFlow: false,
+        useAutoScan: false,
+        connectingMessage: (
+            <FormattedMessage
+                defaultMessage="Connecting"
+                description="Have your Snap Circuits U33 nearby."
+                id="gui.extension.snapCircuitsU33.connectingMessage"
             />
         )
     },
