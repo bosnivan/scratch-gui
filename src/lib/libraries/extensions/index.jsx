@@ -83,6 +83,15 @@ import minecraftInsetIconURL from './minecraft/minecraft-small.svg';
 import toolboxIconURL from './toolbox/toolbox.png';
 import toolboxInsetIconURL from './toolbox/toolbox-small.svg';
 
+import iCarProIconURL from './iCarPro/iCarPro.png';
+import iCarProInsetIconURL from './iCarPro/iCarPro-small.svg';
+
+import snapCircuitsU33IconURL from './snapCircuitsU33/snapCircuitsU33.png';
+import snapCircuitsU33InsetIconURL from './snapCircuitsU33/snapCircuitsU33-small.svg';
+
+import magicBlueUUIconURL from './magicBlueUU/magicBlueUU.png';
+import magicBlueUUInsetIconURL from './magicBlueUU/magicBlueUU-small.svg';
+
 
 export default [
     {
@@ -567,5 +576,86 @@ export default [
         ),
         featured: true,
         disabled: false
+    },
+    {
+        name: 'Vgate iCar Pro',
+        extensionId: 'iCarPro',
+        collaborator: 'PlusPlus',
+        iconURL: iCarProIconURL,
+        insetIconURL: iCarProInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Vgate iCar Pro extension."
+                description="Description for the Vgate iCar Pro extension"
+                id="gui.extension.iCarPro.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        bluetoothRequired: true,
+        internetConnectionRequired: false,
+        launchPeripheralConnectionFlow: false,
+        useAutoScan: false,
+        connectingMessage: (
+            <FormattedMessage
+                defaultMessage="Connecting"
+                description="Have your iCar Pro nearby."
+                id="gui.extension.iCarPro.connectingMessage"
+            />
+        )
+    },
+    {
+        name: 'Snap Circuits U33',
+        extensionId: 'snapCircuitsU33',
+        collaborator: 'PlusPlus',
+        iconURL: snapCircuitsU33IconURL,
+        insetIconURL: snapCircuitsU33InsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Snap Circuits U33 extension."
+                description="Description for the Snap Circuits U33 extension"
+                id="gui.extension.snapCircuitsU33.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        bluetoothRequired: true,
+        internetConnectionRequired: false,
+        launchPeripheralConnectionFlow: false,
+        useAutoScan: false,
+        connectingMessage: (
+            <FormattedMessage
+                defaultMessage="Connecting"
+                description="Have your Snap Circuits U33 nearby."
+                id="gui.extension.snapCircuitsU33.connectingMessage"
+            />
+        )
+    },
+    {
+        name: 'Magic Blue UU',
+        extensionId: 'magicBlueUU',
+        collaborator: 'PlusPlus',
+        iconURL: magicBlueUUIconURL,
+        insetIconURL: magicBlueUUInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Magic Blue UU extension."
+                description="Description for the Magic Blue UU extension"
+                id="gui.extension.magicBlueUU.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        bluetoothRequired: true,
+        internetConnectionRequired: false,
+        launchPeripheralConnectionFlow: false,
+        useAutoScan: false,
+        connectingMessage: (
+            <FormattedMessage
+                defaultMessage="Connecting"
+                description="Have your Magic Blue UU nearby."
+                id="gui.extension.magicBlueUU.connectingMessage"
+            />
+        )
     },
 ];
