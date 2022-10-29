@@ -89,6 +89,9 @@ import iCarProInsetIconURL from './iCarPro/iCarPro-small.svg';
 import snapCircuitsU33IconURL from './snapCircuitsU33/snapCircuitsU33.png';
 import snapCircuitsU33InsetIconURL from './snapCircuitsU33/snapCircuitsU33-small.svg';
 
+import magicBlueUUIconURL from './magicBlueUU/magicBlueUU.png';
+import magicBlueUUInsetIconURL from './magicBlueUU/magicBlueUU-small.svg';
+
 
 export default [
     {
@@ -625,6 +628,33 @@ export default [
                 defaultMessage="Connecting"
                 description="Have your Snap Circuits U33 nearby."
                 id="gui.extension.snapCircuitsU33.connectingMessage"
+            />
+        )
+    },
+    {
+        name: 'Magic Blue UU',
+        extensionId: 'magicBlueUU',
+        collaborator: 'PlusPlus',
+        iconURL: magicBlueUUIconURL,
+        insetIconURL: magicBlueUUInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Magic Blue UU extension."
+                description="Description for the Magic Blue UU extension"
+                id="gui.extension.magicBlueUU.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        bluetoothRequired: true,
+        internetConnectionRequired: false,
+        launchPeripheralConnectionFlow: false,
+        useAutoScan: false,
+        connectingMessage: (
+            <FormattedMessage
+                defaultMessage="Connecting"
+                description="Have your Magic Blue UU nearby."
+                id="gui.extension.magicBlueUU.connectingMessage"
             />
         )
     },
